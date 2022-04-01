@@ -57,10 +57,15 @@ class LoginController extends Controller
             //Atribui o email do usuário a sessão
             $_SESSION['email'] = $usuario->email;
             //Redireciona para a rota app/clientes
-            return redirect()->route('app.clientes');
+            return redirect()->route('app.home');
         } else {
             //Caso usuario não exista, redireciona para a rota login com o parametro erro = 1
             return redirect()->route('site.login', ['erro' => 1]);
         }
+    }
+
+    public function sair(){
+        session_destroy();
+        return redirect()->route('site.index');
     }
 }
