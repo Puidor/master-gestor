@@ -6,6 +6,7 @@ use App\Http\Controllers\ContatosController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\LoginController;
 // use App\Http\Middleware\LogAcessoMiddleware;
 
 /*
@@ -27,8 +28,9 @@ Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.so
 Route::get('/contatos', [ContatosController::class, 'contatos'])->name('site.contato');
 //Rota com método post contatos com apelido 'site.contato' que chama a classe salvar do ContatosController
 Route::post('/contatos', [ContatosController::class, 'salvar'])->name('site.contato');
-//Rota Login
-Route::get('/login', function(){return 'Login';})->name('site.login');
+//Rota Login recebe o parametro erro opcicional '?'
+Route::get('/login{erro?}', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login');
 
 //Rotas dentro de /app que chamam middleware log.acesso e autenticação nessa ordem de execução
 Route::middleware('log.acesso', 'autenticacao:ldap,visitante')->prefix('/app')->group(function() {  
