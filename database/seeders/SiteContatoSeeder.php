@@ -15,6 +15,6 @@ class SiteContatoSeeder extends Seeder
     public function run()
     {
         //Código para gerar dados aleatórios no banco de dados
-        \App\Models\SiteContato::factory(100)->create();
+        \App\Models\SiteContato::factory()->count(100)->create();
     }
 }

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this.call(SiteContatoSeeder::class);
-        $this.call(MotivoContatoSeeder::class);
+        $this->call(SiteContatoSeeder::class);
+        $this->call(MotivoContatoSeeder::class);
     }
 }
