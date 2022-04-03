@@ -15,6 +15,7 @@
         </div>
         <div class="informacao-pagina">
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
+                {{-- Ao clicar em pesquisar o usuario é encaminhado para a rota app.fornecedor.listar atráves do método post --}}
                 <form action="{{ route('app.fornecedor.listar') }}" method="post"> @csrf
                     <input type="text" name="nome" placeholder="Nome" class="borda-preta">
                     <input type="text" name="site" placeholder="Site" class="borda-preta">

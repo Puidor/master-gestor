@@ -12,8 +12,17 @@ class FornecedorController extends Controller
         return view('app.fornecedor.index');
     }
 
-    public function listar(){
-        return view('app.fornecedor.listar');
+    public function listar(Request $request){
+        // Cria uma variável para armazenar o resultado da consulta ao banco de dados através do modelo Fornecedor
+        //Pesquisa no banco de dados os registros que contenham o termo informado pelo usuário em cada input
+        $fornecedores = Fornecedor::where('nome', 'like', '%'.$request->input('nome'))
+        ->where('site', 'like', '%'.$request->input('site'))
+        ->where('uf', 'like', '%'.$request->input('uf'))
+        ->where('email', 'like', '%'.$request->input('email'))
+        ->get();
+        
+        // Retorna a view app.fornecedor.listar com a variável $fornecedores
+        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores]);
     }
 
     public function adicionar(Request $request){
