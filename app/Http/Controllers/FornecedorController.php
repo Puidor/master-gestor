@@ -29,8 +29,8 @@ class FornecedorController extends Controller
 
         $msg = '';
 
-        //Verifica se existe um token de requisição sendo transmitido
-        if($request->input('_token') != ''){
+        //Verifica se existe um token de requisição sendo transmitido e se o ID está vazio irá ADICIONAR um novo registro
+        if($request->input('_token') != '' && $request->input('id') == ''){
             //Validação
             $regras = [
                 'nome' => 'required|min:3|max:100',
@@ -59,6 +59,27 @@ class FornecedorController extends Controller
             $msg = 'Fornecedor cadastrado com sucesso!';
         }
 
+        //Verifica se existe um token de requisição sendo transmitido e se o ID estiver um valor iremos EDITAR um registro
+        if($request->input('_token') != '' && $request->input('id') != ''){
+            //Busca o registro no banco de dados pelo ID
+            $fornecedor = Fornecedor::find($request->input('id'));
+            //Update dos registro com os dados do formulário
+            $update = $fornecedor->update($request->all());
+
+            if($update){
+                $msg = 'Fornecedor atualizado com sucesso!';
+            } else {
+                $msg = 'Erro ao atualizar o fornecedor!';
+            }
+            return redirect()->route('app.fornecedor.editar', ['id' => $request->input('id'), 'msg'=> $msg]);
+        }
+
         return view('app.fornecedor.adicionar', ['msg' => $msg]);
+    }
+
+    public function editar($id, $msg = ''){
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 }

@@ -35,7 +35,8 @@
                                 <td>{{ $fornecedor->uf}}</td>
                                 <td>{{ $fornecedor->email}}</td>
                                 <td>Excluir</td>
-                                <td>Editar</td>
+                                {{-- Linka para a rota app.fornecedor.editar e passa o atributo id do fornecedor --}}
+                                <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id)}}">Editar</a></td>
                             </tr>
                         @endforeach
                     </tbody>

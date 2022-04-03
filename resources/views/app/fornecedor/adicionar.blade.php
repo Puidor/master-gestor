@@ -14,24 +14,25 @@
             </ul>
         </div>
         <div class="informacao-pagina">
-            {{ $msg }}
+            {{ $msg ?? '' }}
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <form action="{{ route('app.fornecedor.adicionar') }}" method="post"> @csrf
+                    <input type="hidden" name="id" value="{{ $fornecedor->id ?? '' }}">
                     {{-- Input Nome --}}
-                    <input type="text" name="nome" value="{{ old('nome') }}" placeholder="Nome" class="borda-preta">
+                    <input type="text" name="nome" value="{{$fornecedor->nome ?? old('nome') }}" placeholder="Nome" class="borda-preta">
                     {{-- Verifica se valor passado no input nome passou na validação. Se não passou a variavel errors irá retornar um erro  que será mostrado em tela --}}
                     {{ $errors->has('nome') ? $errors->first('nome') : '' }}
 
                     {{-- Input Site --}}
-                    <input type="text" name="site" value="{{ old('site') }}" placeholder="Site" class="borda-preta">
+                    <input type="text" name="site" value="{{ $fornecedor->site ?? old('site') }}" placeholder="Site" class="borda-preta">
                     {{ $errors->has('site') ? $errors->first('site') : '' }}
 
                     {{-- Input UF --}}
-                    <input type="text" name="uf" value="{{ old('uf') }}" placeholder="UF" class="borda-preta">
+                    <input type="text" name="uf" value="{{ $fornecedor->uf ?? old('uf') }}" placeholder="UF" class="borda-preta">
                     {{ $errors->has('uf') ? $errors->first('uf') : '' }}
 
                     {{-- Input EMAIL --}}
-                    <input type="text" name="email" value="{{ old('email') }}" placeholder="Email" class="borda-preta">
+                    <input type="text" name="email" value="{{ $fornecedor->email ?? old('email') }}" placeholder="Email" class="borda-preta">
                     {{ $errors->has('email') ? $errors->first('email') : '' }}
                     {{-- BOTão Cadastrar --}}
                     <button type="submit" class="borda-preta">Cadastrar</button>
