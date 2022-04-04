@@ -9,4 +9,9 @@ class Produto extends Model
 {
     use HasFactory;
     protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
+
+    public function ProdutoDetalhe(){
+        return $this->hasOne(ProdutoDetalhe::class);
+        // return $this->hasOne('App\Models\ProdutoDetalhe');
+    }
 }
