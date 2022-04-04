@@ -80,7 +80,8 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        //
+        $unidades = Unidade::all();
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
@@ -92,7 +93,10 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        $request->all(); //Pega todos os dados do formulário
+        $produto->update($request->all()); //Atualiza os dados do produto com os dados do formulário
+
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
