@@ -1,16 +1,16 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'Fornecedor')
+@section('titulo', 'Produto')
 
 @section('conteudo')
     <div class="conteudo-pagina">
         <div class="titulo-pagina-2">
-            <p>Fornecedor - Listar</p>
+            <p>Listagem de Produtos</p>
         </div>
         <div class="menu">
             <ul>
-                <li><a href="{{ route('app.fornecedor.adicionar') }}">Novo</a></li>
-                <li><a href="{{ route('app.fornecedor') }}">Consulta</a></li>
+                <li><a href="{{ route('produto.create') }}">Novo</a></li>
+                <li><a href="">Consulta</a></li>
             </ul>
         </div>
         <div class="informacao-pagina">
@@ -19,30 +19,30 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Site</th>
-                            <th>UF</th>
-                            <th>Email</th>
+                            <th>Descrição</th>
+                            <th>Peso</th>
+                            <th>Unidade ID</th>
                             <th></th>            
                             <th></th>            
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- Percorre todo o array $fornecedores --}}
-                        @foreach ($fornecedores as $fornecedor)
+                        {{-- Percorre todo o array $produtos --}}
+                        @foreach ($produtos as $produto)
                             <tr>
-                                <td>{{ $fornecedor->nome}}</td>
-                                <td>{{ $fornecedor->site}}</td>
-                                <td>{{ $fornecedor->uf}}</td>
-                                <td>{{ $fornecedor->email}}</td>
+                                <td>{{ $produto->nome}}</td>
+                                <td>{{ $produto->descricao}}</td>
+                                <td>{{ $produto->peso}}</td>
+                                <td>{{ $produto->unidade_id}}</td>
                                 {{-- Linka para a rota app.fornecedor.editar e passa o atributo id do fornecedor --}}
-                                <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id)}}">Excluir</a></td>
+                                <td><a href="">Excluir</a></td>
                                 {{-- Linka para a rota app.fornecedor.excluir e passa o atributo id do fornecedor --}}
-                                <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id)}}">Editar</a></td>
+                                <td><a href="">Editar</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $fornecedores->appends($request)->links() }}
+                {{ $produtos->appends($request)->links() }}
             </div>
         </div>
     </div>
