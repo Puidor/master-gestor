@@ -22,7 +22,7 @@
                 <form method="post" action="{{ route('produto.update', ['produto' => $produto->id]) }}">
                     @csrf    
                     @method('PUT') {{-- Método como será o update! - Pode ser PUT ou PATCH --}}
-                    
+
                     <input type="text" name="nome" value="{{ $produto->nome ?? old('nome') }}" placeholder="Nome" class="borda-preta">
                     {{ $errors->has('nome') ? $errors->first('nome') : '' }}
 
@@ -41,7 +41,6 @@
                         {{ $errors->has('unidade_id') ? $errors->first('unidade_id') : '' }}
                     </select>
                     
-
                     <button type="submit" class="borda-preta">Cadastrar</button>
                 </form>
             </div>
