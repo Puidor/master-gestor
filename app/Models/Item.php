@@ -10,7 +10,7 @@ class Item extends Model
 {   
     //Model Item mapeia a tabela produtos no banco de dados
     protected $table = 'produtos'; //O nome da tabela no banco de dados é produtos - Faz o link manualmente
-    protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
+    protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id', 'fornecedor_id'];
 
     //Relacionamento entre Item e ItemDetalhe
     public function itemDetalhe(){
