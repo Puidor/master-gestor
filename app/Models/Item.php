@@ -17,4 +17,10 @@ class Item extends Model
         //Determina que o relacionamento é (um para muitos) e que a fk é produto_id e a pk local é id
         return $this->hasOne(ItemDetalhe::class, 'produto_id', 'id');
     }
+
+    //Relacionamento entre Item e Fornecedor
+    public function fornecedor(){
+        //Determina que um Item pertence a um Fornecedor
+        return $this->belongsTo(Fornecedor::class);
+    }
 }
