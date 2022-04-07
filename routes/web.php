@@ -11,6 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
+use App\Http\Controllers\PedidoProdutoController;
+use App\Http\Controllers\PedidoController;
 // use App\Http\Middleware\LogAcessoMiddleware;
 
 /*
