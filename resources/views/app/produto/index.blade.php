@@ -24,7 +24,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Descrição</th>
-                            <th>Fornecedor</th>
+                            <th>Nome do Fornecedor</th>
                             <th>Site do Fornecedor</th>
                             <th>Peso</th>
                             <th>Unidade ID</th>
@@ -60,10 +60,20 @@
                                 </td>
                                 <td><a href="{{ route('produto.edit', ['produto' => $produto->id ]) }}">Editar</a></td>
                             </tr>
+
+                            <tr>
+                                <td colspan="12">
+                                    <p>Pedidos</p>
+                                    @foreach($produto->pedidos as $pedido)
+                                        <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                            Pedido: {{ $pedido->id }},
+                                        </a>
+                                    @endforeach
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
-
                 
                 {{ $produtos->appends($request)->links() }}
 

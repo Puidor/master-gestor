@@ -23,4 +23,13 @@ class Item extends Model
         //Determina que um Item pertence a um Fornecedor
         return $this->belongsTo(Fornecedor::class);
     }
+
+    public function pedidos() {
+        return $this->belongsToMany('App\models\Pedido', 'pedidos_produtos', 'produto_id', 'pedido_id');
+
+        /*
+            3 - Representa o nome da FK da tabela mapeada pelo model na tabela de relacionamento
+            4 - Representa o nome da FK da tabela mapeada pelo model utilizado no relacionamento que estamos implementando
+        */
+    }
 }
