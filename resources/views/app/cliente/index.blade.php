@@ -35,7 +35,7 @@
                                 <td>{{ $cliente->nome }}</td>
                                 <td><a href="{{ route('cliente.show', ['cliente' => $cliente->id ]) }}">Visualizar</a></td>
                                 <td>
-                                    <form id="form_{{$cliente->id}}" method="post" action="{{ route('cliente.destroy', ['cliente' => $produto->id]) }}">
+                                    <form id="form_{{$cliente->id}}" method="post" action="{{ route('cliente.destroy', ['cliente' => $cliente->id]) }}">
                                         @method('DELETE')
                                         @csrf
                                         <!--<button type="submit">Excluir</button>-->
