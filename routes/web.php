@@ -40,7 +40,6 @@ Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login'
 Route::middleware('log.acesso', 'autenticacao:ldap,visitante')->prefix('/app')->group(function() {  
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
-    Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
 
     //Método antiquado de definir rotas
     //Rotas de Fornecedor
@@ -53,10 +52,16 @@ Route::middleware('log.acesso', 'autenticacao:ldap,visitante')->prefix('/app')->
     Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
 
     //Melhor método para definir rotas
+
     //Rotas de Produto
     Route::resource('produto', ProdutoController::class);
     //Rotas de ProdutoDetalhe
     Route::resource('produto-detalhe', ProdutoDetalheController::class);
+
+    //Rotas de Cliente, Pedido e PedidoProduto
+    Route::resource('cliente', ClienteController::class);
+    Route::resource('pedido', PedidoController::class);
+    Route::resource('pedido-produto', PedidoProdutoController::class);
 });
 
 Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
